@@ -1,14 +1,13 @@
-const fastify = require('fastify')()
+const app = require("fastify")()
 
-fastify.get('/', async (request, reply) => {
-  return { hello: 'world' }
-})
+app.register(require("./src/service/auth"))
+app.register(require("./src/service/hello"))
 
 const start = async () => {
   try {
-    await fastify.listen(3000)
+    await app.listen(3000)
   } catch (err) {
-    fastify.log.error(err)
+    app.log.error(err)
     process.exit(1)
   }
 }

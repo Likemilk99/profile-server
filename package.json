@@ -1,0 +1,24 @@
+{
+  "name": "profile-server",
+  "version": "1.0.0",
+  "description": "server",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Likemilk99/profile-server.git"
+  },
+  "author": "ivan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Likemilk99/profile-server/issues"
+  },
+  "homepage": "https://github.com/Likemilk99/profile-server#readme",
+  "dependencies": {
+    "fastify": "^2.13.1",
+    "nodemon": "^2.0.3"
+  }
+}

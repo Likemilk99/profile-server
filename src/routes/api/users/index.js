@@ -5,16 +5,11 @@ const userRoutes = async (app, opts) => {
     "/",
     { schema: getAllSchema, preValidation: [app.authenticate] },
     async (requst, reply) => {
-      return [
-        {
-          id: 1,
-          name: "Ivan",
-        },
-        {
-          id: 2,
-          name: "Boris",
-        },
-      ]
+      const { mongo } = app
+      const db = mongo.db
+      const collection = db.collection("User")
+      const users = await collection.find().toArray()
+      return users
     }
   )
 

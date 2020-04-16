@@ -5,7 +5,7 @@ module.exports = fp(async (app, opts) => {
     secret: "supersecret",
   })
 
-  app.decorate("authenticate", async function(request, reply) {
+  app.decorate("authenticate", async function (request, reply) {
     try {
       await request.jwtVerify()
     } catch (err) {
@@ -13,4 +13,3 @@ module.exports = fp(async (app, opts) => {
     }
   })
 })
-

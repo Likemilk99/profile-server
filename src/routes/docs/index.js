@@ -1,20 +1,29 @@
 module.exports = {
-  routePrefix: "/documentation",
+  routePrefix: "/docs",
   exposeRoute: true,
   swagger: {
     info: {
-      title: "Fastify API",
-      description:
-        "Building a blazing fast REST API with Node.js, MongoDB, Fastify and Swagger",
-      version: "1.0.0",
+      title: "api",
+      description: "api documentation",
+      version: "0.1.0",
     },
-    externalDocs: {
-      url: "https://swagger.io",
-      description: "Find more info here",
-    },
-    host: "localhost:3000",
+    servers: [
+      { url: "http://localhost:3000", description: "development" },
+      {
+        url: "https://<production-url>",
+        description: "production",
+      },
+    ],
     schemes: ["http"],
     consumes: ["application/json"],
     produces: ["application/json"],
+    security: [{ bearerAuth: [] }],
+    securityDefinitions: {
+      bearerAuth: {
+        type: "http",
+        scheme: "bearer",
+        bearerFormat: "JWT",
+      },
+    },
   },
 }

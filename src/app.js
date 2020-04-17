@@ -1,10 +1,12 @@
 const fastify = require('fastify')
+const cors = require('cors')
 const { APP_PORT } = require('./environment')
 
 const app = fastify({
   logger: { prettyPrint: true },
 })
 
+app.use(cors())
 require('./plugins/mongo-db')(app)
 
 app.register(require("./services/auth"))

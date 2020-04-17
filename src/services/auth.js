@@ -2,7 +2,7 @@ const fp = require("fastify-plugin")
 const { SECRET_KEY } = require('../environment')
 
 
-module.exports = fp(async (app, opts) => {
+module.exports = fp(async (app, opts, next) => {
   app.register(require("fastify-jwt"), {
     secret: SECRET_KEY,
   })
@@ -14,4 +14,5 @@ module.exports = fp(async (app, opts) => {
       reply.send(err)
     }
   })
+  next()
 })

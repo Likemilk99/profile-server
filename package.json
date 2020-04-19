@@ -4,7 +4,8 @@
   "description": "server",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon node ./src/app.js",
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json && node ./dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,5 +28,9 @@
     "fastify-swagger": "^2.5.1",
     "nodemon": "^2.0.3",
     "pino-pretty": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^13.13.0",
+    "typescript": "^3.8.3"
   }
 }

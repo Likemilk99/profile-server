@@ -1,9 +1,18 @@
 import fastify from 'fastify'
-import apiRoutes from './routes/api'
+import { Server, IncomingMessage, ServerResponse } from "http";
 
-const app =  fastify({ logger: { prettyPrint: true } })
+import apiRoutes from "./routes/api"
+import decorators from "./decorators"
 
+const app: fastify.FastifyInstance<
+  Server,
+  IncomingMessage,
+  ServerResponse
+> = fastify({logger:true});
+
+app.register(decorators)
 app.register(apiRoutes, {prefix: 'api'})
+
 app.listen(8080, (err, address) => {
   if(err) {
     console.error(err)

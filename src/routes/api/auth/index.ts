@@ -1,4 +1,4 @@
-const { loginSchema, logoutSchema } = require("./schemas")
+import { loginSchema, logoutSchema } from "./schemas"
 
 const authRoutes = async (app, opts) => {
   app.post("/login", { schema: loginSchema }, async (request, reply) => {
@@ -19,4 +19,4 @@ const authRoutes = async (app, opts) => {
   })
 }
 
-module.exports = authRoutes
+export default authRoutes

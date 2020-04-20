@@ -1,4 +1,4 @@
-const loginSchema = {
+export const loginSchema = {
   tags: ["auth"],
   params: {
     username: { type: "string" },
@@ -6,12 +6,7 @@ const loginSchema = {
   },
 }
 
-const logoutSchema = {
+export const logoutSchema = {
   tags: ["auth"],
   params: {},
-}
-
-module.exports = {
-  loginSchema,
-  logoutSchema,
 }

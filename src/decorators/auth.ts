@@ -1,10 +1,8 @@
-const fp = require("fastify-plugin")
-const { SECRET_KEY } = require('../environment')
+import fp from "fastify-plugin"
 
-
-module.exports = fp(async (app, opts, next) => {
+export default fp(async (app, opts, next) => {
   app.register(require("fastify-jwt"), {
-    secret: SECRET_KEY,
+    secret: "super_secret_key",
   })
 
   app.decorate("authenticate", async function (request, reply) {

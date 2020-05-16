@@ -1,5 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable} from "typeorm"
-import {Role} from "./Role"
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm"
+import { Role } from "./Role"
 
 @Entity()
 export class User {
@@ -12,12 +18,12 @@ export class User {
   @Column()
   password: string
 
-  @Column()
+  @Column({ default: true })
   isActive: boolean
 
-  @ManyToMany(type => Role, role => role.users, {
-    cascade: true
-})
+  @ManyToMany((type) => Role, (role) => role.users, {
+    cascade: true,
+  })
   @JoinTable()
   roles: Role[]
 }

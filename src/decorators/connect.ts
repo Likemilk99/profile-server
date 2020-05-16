@@ -1,4 +1,5 @@
 import { createConnection, Connection } from "typeorm"
+import {root} from "../paths"
 import fp from "fastify-plugin"
 
 export interface Db {
@@ -7,12 +8,8 @@ export interface Db {
 
 export default fp(async (app, opts, next) => {
   const connection = await createConnection({
-    type: "mysql",
-    host: "localhost",
-    port: 3306,
-    username: "root",
-    password: "root",
-    database: "demo_2",
+    type: "sqlite",
+    database: `${root}/data/line.sqlite`,
     entities: ["src/models/**/*.ts"]
   })
   await connection.synchronize()
